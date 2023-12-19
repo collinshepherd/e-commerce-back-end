@@ -41,6 +41,7 @@ router.get("/:id", async (req, res) => {
         },
       ],
     });
+    res.status(200).json(productData);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -122,7 +123,7 @@ router.delete("/:id", async (req, res) => {
         id: req.params.id,
       },
     });
-    res.status(200).json(productData, { message: "Successfully Deleted" });
+    res.status(200).json({ message: "Product Successfully Deleted" });
   } catch (err) {
     res.status(400).json(err);
   }
