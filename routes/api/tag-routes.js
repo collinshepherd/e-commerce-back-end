@@ -42,7 +42,8 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   // update a tag's name by its `id` value
   try {
-    const newTagData = await Category.update(req.body, {
+    console.log("test");
+    const newTagData = await Tag.update(req.body, {
       where: {
         id: req.params.id,
       },
@@ -50,7 +51,7 @@ router.put("/:id", async (req, res) => {
     if (!newTagData[0]) {
       res.status(404).json({ message: "No category with this id!" });
     }
-    res.json(newTagData);
+    res.status(200).json({ message: "Product Successfully Updated" });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -68,7 +69,7 @@ router.delete("/:id", async (req, res) => {
       res.status(404).json({ message: "No category with this id!" });
       return;
     }
-    res.status(200).json(tagData);
+    res.status(200).json({ message: "Product Successfully Deleted" });
   } catch (err) {
     res.status(500).json(err);
   }
